@@ -1,12 +1,13 @@
-const Property = require('../models/Property.js')
-const Contractor = require('../models/Contractor.js')
-const Owner = require('../models/Owner.js')
-const jobsedit = require('./jobsEdit.json')
+// const Property = require('../models/Property.js')
+// const Contractor = require('../models/Contractor.js')
+// const Owner = require('../models/Owner.js')
+// const jobsedit = require('./jobsEdit.json')
+const imagedata = require('./images.json')
 
 const Images = require('./models/Images.js')
 
 Images.deleteMany({}).then(
- Images.insertMany().then(info => {
+ Images.insertMany(imagedata).then(info => {
      console.log (info)
  }).catch(err=> {console.log(err)})
 )
@@ -45,4 +46,4 @@ Images.deleteMany({}).then(
 //     //end of function
 // }
 
-dbRun()
+// dbRun()

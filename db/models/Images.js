@@ -1,4 +1,4 @@
-const mongoose = require('../db/connection')
+const mongoose = require('../connection.js')
 const Schema = mongoose.Schema;
 
 const Image = new mongoose.Schema({
@@ -14,6 +14,19 @@ const Image = new mongoose.Schema({
         trim: true
     },
     name: {
+        type: String,
+        default: String,
+        trim: true
+    },
+    githubH: {
+        type: Number,
+        default: 0,
+    },
+    githubW: {
+        type: Number,
+        default: 0,
+    },
+    activityName: {
         type: String,
         default: String,
         trim: true
