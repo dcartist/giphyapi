@@ -7,7 +7,9 @@ router.get("/", (req, res) => {
         res.json(data)
     })
 })
-
+router.get("/update/:id", (req,res)=>{
+    Images.findById(req.params.id).then(update=>res.json(update))
+})
 router.put("/update/:id", (req, res) => {
     Images.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
         .then(update => res.json(update))
