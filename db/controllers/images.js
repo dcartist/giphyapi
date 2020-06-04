@@ -7,6 +7,14 @@ router.get("/", (req, res) => {
         res.json(data)
     })
 })
+router.get("/page/:skip/:limit", (req, res) => {
+    let skip = parseInt(req.params.skip)
+    let limit = parseInt(req.params.limit)
+    Images.find({},null,{limit:limit,skip:skip}).then(data => {
+        res.json(data)
+    }).catch(err=>console.log(err))
+})
+
 router.get("/update/:id", (req,res)=>{
     Images.findById(req.params.id).then(update=>res.json(update))
 })
