@@ -8,10 +8,27 @@ router.get("/", (req, res) => {
     })
 })
 router.get("/page/:skip/:limit", (req, res) => {
-    let skip = parseInt(req.params.skip)
     let limit = parseInt(req.params.limit)
+    let skip = (parseInt(req.params.skip)-1) * limitgi
     Images.find({},null,{limit:limit,skip:skip}).then(data => {
         res.json(data)
+    }).catch(err=>console.log(err))
+})
+
+router.get("/pageindex/:skip/:limit", (req, res) => {
+    let limit = parseInt(req.params.limit)
+    let skip = (parseInt(req.params.skip)-1) * limit
+
+    Images.find({},null,{limit:limit,skip:skip}).then(data => {
+        let newData = {};
+        for(var i=0;i<data.length;i++){
+            newData[i+skip]=data[i];
+        }
+        // data.forEach((item,index) => {data[index]['sortOrder']=i;
+        // i++;}
+        // )
+
+        res.json(newData)
     }).catch(err=>console.log(err))
 })
 
