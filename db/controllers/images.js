@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 })
 router.get("/page/:skip/:limit", (req, res) => {
     let limit = parseInt(req.params.limit)
-    let skip = (parseInt(req.params.skip)-1) * limitgi
+    let skip = (parseInt(req.params.skip)-1) * limit
     Images.find({},null,{limit:limit,skip:skip}).then(data => {
         res.json(data)
     }).catch(err=>console.log(err))
