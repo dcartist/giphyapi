@@ -7,7 +7,7 @@ const imagesController = require('./db/controllers/images')
 app.use(parser.urlencoded({ extended: true }))
 app.use(parser.json())
 app.use(cors())
-    app.get("/", (req, res) => {
+app.get("/", (req, res) => {
         res.send("Welcome to images")
     })
 app.use('/img', imagesController)
